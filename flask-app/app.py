@@ -1,5 +1,6 @@
 from flask import Flask
 import mysql.connector
+from dash import Dash
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
