@@ -1,6 +1,5 @@
 from flask import Flask
 import mysql.connector
-# from dash import Dash, html, dcc
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
@@ -14,16 +13,6 @@ mycursor = mydb.cursor()
 mycursor.execute("select * from rental_data.rental limit 10;")
 myresult = mycursor.fetchall()
 
-# appDash = Dash(__name__,server=app,url_base_pathname='/dash/')
-
-# appDash.layout = html.Div(children=[
-#     html.H1(children='Hello Dash'),
-
-#     html.Div(children='''
-#         Dash: A web application framework for your data.
-#     '''),
-
-# ])
 
 @app.route('/')
 def home():
@@ -36,11 +25,6 @@ def home():
     total = ''.join(total)
 
     return total
-
-# @app.route('/dash')
-# def dashHome():
-
-#     return appDash.index()
 
 
 if __name__ == '__main__':
