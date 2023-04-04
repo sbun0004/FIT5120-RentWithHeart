@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import mysql.connector
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
@@ -24,7 +24,7 @@ def home():
     
     total = ''.join(total)
 
-    return total
+    return render_template('home.html')
 
 
 if __name__ == '__main__':

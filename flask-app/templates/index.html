@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}"/>
+   </head>
+   <body>
+      <header>
+         <nav>
+            <ul class="nav__links">
+               <li><a href="{{ url_for('home') }}">Home</a></li>
+            </ul>
+         </nav>
+      </header>
+      {% block content %}
+         
+      {% endblock %}
+   </body>
+</html>
