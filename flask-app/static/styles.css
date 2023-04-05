@@ -9,3 +9,10 @@
     font-size: 16px;
     text-decoration: none;
 }
+
+.sqr {
+    height: 200px;
+    width: 200px;
+    background-color: #555;
+    border-radius: 5%;
+}
