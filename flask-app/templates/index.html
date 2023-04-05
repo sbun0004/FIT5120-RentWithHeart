@@ -11,15 +11,15 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav mx-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Home</a>
+                  <a class="nav-link" href="{{ url_for('home') }}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle" href="{{ url_for('suburb') }}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Suburb
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Forecasting</a>
-                    <a class="dropdown-item" href="#">Historical Data</a>
+                    <a class="dropdown-item" href="{{ url_for('suburb_forecast') }}">Forecasting</a>
+                    <a class="dropdown-item" href="{{ url_for('suburb_historicaldata') }}">Historical Data</a>
                   </div>
                 </li>
               </ul>
