@@ -17,9 +17,11 @@ import plotly.express as px
 import plotly.graph_objs as go
 from datetime import datetime
 
-# !pip3 install dash
+!pip3 install dash
 
-from dash import Dash, html
+from dash import Dash, html, dcc
+
+app = Dash(__name__)
 
 """#Read data and Clean data"""
 
@@ -39,7 +41,7 @@ df.isnull().sum()
 
 df['Year'] = df['Year'].astype('str')
 
-#df['Year'] = df['Year'].apply(lambda val: datetime.strptime(val, "%Y"))
+df['Year'] = df['Year'].apply(lambda val: datetime.strptime(val, "%Y"))
 df['Year'] = df['Year'].apply(lambda val: datetime.strftime(val, "%Y"))
 
 count = df[df['Measure'] == 'Count']
@@ -64,17 +66,24 @@ for i in Housing_Typels:
     fig.update_layout(
     xaxis_title='Year',
     yaxis_title='Value',
-    title= i,
+    title= 'Historical Trend for Rent of ' + i + ' From 2018 to 2022',
     hovermode="x")
     fig.show()
     figls.append(fig)
+    fig.write_html(i+".html")
 
 figls[0].show()
 
 fig = px.line(onebedflat, x="Year", y="Value", color='Suburb')
 fig.show()
 
+app.layout = html.Div([
+    html.Div(children='My First App with Data and a Graph'),
+    dcc.Graph(figure=px.line(onebedflat, x="Year", y="Value", color='Suburb'))
+])
 
+if __name__ == '__main__':
+    app.run_server(debug=True)
 
 
 
