@@ -10,9 +10,23 @@
     text-decoration: none;
 }
 
-.sqr {
-    height: 200px;
-    width: 200px;
-    background-color: #555;
-    border-radius: 5%;
+a {
+    position: relative;
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 800;
+  color: royalblue;
+  overflow: hidden;
+  background: linear-gradient(to right, rgb(0, 122, 22), rgb(0, 122, 22) 50%, rgb(0, 0, 0) 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 275ms ease;
+  text-decoration: none;
+}
+
+a:hover{
+    background-position: 0 100%;
 }
