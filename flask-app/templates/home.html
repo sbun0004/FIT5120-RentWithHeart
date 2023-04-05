@@ -1,12 +1,10 @@
 {% extends "index.html" %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <img src="images/brighton1.jpg" class="img-fluid" alt="Responsive image">
-        <div>
-    </div>
+<div class="container-fluid">
+    <div class="col-md-0 px-0">
+        <img src="{{ url_for('static', filename='images/home1.png') }}" class="img-fluid">
+    <div>
 </div>
 
 {% endblock %}
