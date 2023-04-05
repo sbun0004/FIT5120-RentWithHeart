@@ -27,11 +27,15 @@ def suburb_forecast():
         return redirect(url_for('login'))
     return render_template('suburb_forecast.html')
 
-@app.route('/suburb/historicaldata')
-def suburb_historicaldata():
+@app.route('/suburb/<int:Number>')
+def suburb_historicaldata(Number):
     if 'logged_in' not in session:
         return redirect(url_for('login'))
-    return render_template('suburb_historicaldata.html')
+
+    if Number < 1 or Number > 7:
+        return redirect(url_for('home'))
+    else:
+        return render_template('historical_trends/subdat'+str(Number)+'.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
