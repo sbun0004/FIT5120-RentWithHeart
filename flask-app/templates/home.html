@@ -2,13 +2,26 @@
 
 {% block content %}
 <img src="{{ url_for('static', filename='images/home1.png') }}" class="img-fluid">
+<script>
+    let images = [
+        'static/images/slide1.png',
+        'static/images/slide2.jpg',
+        'static/images/slide3.jpg',
+    ];
+    let currentImageIndex = 0;
+
+    function switchImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        document.getElementById('image-container').src = images[currentImageIndex];
+    }
+</script>
 <div class="container">
     <div class="row">
         <div class="col">
-            <img src="{{ url_for('static', filename='images/slide1.png') }}" class="img-fluid">
+            <img id="image-container" src="{{ url_for('static', filename='images/slide1.png') }}" alt="Image" onclick="switchImage()" style="cursor:pointer; max-width: 100%; max-height: 700px;">
         </div>
     </div>
-</div>
+</div> 
 <div class="container">
     <div class="row">
         <div class="col-3">
