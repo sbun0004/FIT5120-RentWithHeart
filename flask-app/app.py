@@ -1,9 +1,12 @@
 from flask import Flask, render_template, session, redirect, url_for, request
+from dash import Dash, html
 import mysql.connector
 
-app = Flask(__name__, template_folder='templates', static_folder='static')
+server = Flask(__name__, template_folder='templates', static_folder='static')
+app = Dash(__name__, server=server, url_base_pathname='/test/')
+app.layout = html.Div([html.H1('This Is head',style={'textAlign':'center'})])
 
-app.secret_key = 'mysecret'
+server.secret_key = 'mysecret'
 
 mydb = mysql.connector.connect(
   host='rental-data.cckjcfdnzspp.ap-southeast-2.rds.amazonaws.com',
@@ -15,19 +18,19 @@ mycursor = mydb.cursor()
 mycursor.execute("select * from rental_data.rental limit 10;")
 myresult = mycursor.fetchall()
 
-@app.route('/')
+@server.route('/')
 def home():
     if 'logged_in' not in session:
         return redirect(url_for('login'))
     return render_template('home.html')
 
-@app.route('/suburb/forecast')
+@server.route('/suburb/forecast')
 def suburb_forecast():
     if 'logged_in' not in session:
         return redirect(url_for('login'))
     return render_template('suburb_forecast.html')
 
-@app.route('/suburb/<int:Number>')
+@server.route('/suburb/<int:Number>')
 def suburb_historicaldata(Number):
     if 'logged_in' not in session:
         return redirect(url_for('login'))
@@ -37,7 +40,7 @@ def suburb_historicaldata(Number):
     else:
         return render_template('historical_trends/subdat'+str(Number)+'.html')
 
-@app.route('/login', methods=['GET', 'POST'])
+@server.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         # Check the login credentials
@@ -54,5 +57,9 @@ def login():
         </form>
     '''
 
+@server.route("/dash")
+def MyDashApp():
+    return app.index()
+
 if __name__ == '__main__':
-    app.run()
+    app.run_server(debug=True)
