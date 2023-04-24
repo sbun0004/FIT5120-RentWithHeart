@@ -12,12 +12,12 @@ Original file is located at
 import pandas as pd
 import plotly
 import numpy as np
-#from dash import Dash, html
+from dash import Dash, html
 import plotly.express as px
 import plotly.graph_objs as go
 from datetime import datetime
 
-!pip3 install dash
+#!pip3 install dash
 
 from dash import Dash, html, dcc
 
