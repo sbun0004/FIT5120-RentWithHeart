@@ -10,16 +10,27 @@
          <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav mx-auto">
+                <a class="navbar-brand" href="#">
+                  <img src="{{ url_for('static', filename='images/logo.png') }}" width="70" alt="">
+                </a>
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Home</a>
+                  <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{ url_for('suburb_forecast') }}">Forecasting</a>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Trends
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Historical Data
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Discover Affordable Homes</a>
-                    <a class="dropdown-item" href="#">Propert Below Market</a>
+                    <a class="dropdown-item" href="{{ url_for('suburb_historicaldata',Number=1) }}">All Properties</a>
+                    <a class="dropdown-item" href="{{ url_for('suburb_historicaldata',Number=2) }}">1 Bedroom Flats</a>
+                    <a class="dropdown-item" href="{{ url_for('suburb_historicaldata',Number=3) }}">2 Bedroom Flats</a>
+                    <a class="dropdown-item" href="{{ url_for('suburb_historicaldata',Number=4) }}">2 Bedroom Houses</a>
+                    <a class="dropdown-item" href="{{ url_for('suburb_historicaldata',Number=5) }}">3 Bedroom Flats</a>
+                    <a class="dropdown-item" href="{{ url_for('suburb_historicaldata',Number=6) }}">3 Bedroom Houses</a>
+                    <a class="dropdown-item" href="{{ url_for('suburb_historicaldata',Number=7) }}">4 Bedroom Houses</a>
                   </div>
                 </li>
               </ul>
