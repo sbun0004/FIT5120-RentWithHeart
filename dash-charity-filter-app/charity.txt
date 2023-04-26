@@ -1,0 +1,6 @@
+REQUIREMENTS:
+
+Pandas
+Re
+base64
+Pillow
