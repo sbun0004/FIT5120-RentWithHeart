@@ -4,8 +4,8 @@ import geopandas as gpd
 import plotly.express as px
 import dash_bootstrap_components as dbc
 
-forecast_path = 'df_forecast_cleaned.csv'
-localities_path= 'vic_localities_cleaned/vic_localities_cleaned.shp'
+forecast_path = 'https://raw.githubusercontent.com/sbun0004/FIT5120-RentWithHeart/main/dash-app/df_forecast_cleaned.csv'
+localities_path= 'https://github.com/sbun0004/FIT5120-RentWithHeart/blob/main/dash-app/vic_localities_cleaned/vic_localities_cleaned.shp?raw=true'
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
 server = app.server
