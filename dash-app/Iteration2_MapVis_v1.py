@@ -7,7 +7,6 @@ import dash_bootstrap_components as dbc
 forecast_path = 'df_forecast_cleaned.csv'
 localities_path= 'vic_localities_cleaned/vic_localities_cleaned.shp'
 
-# app = Dash(__name__)
 app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
 server = app.server
 
