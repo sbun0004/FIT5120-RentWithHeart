@@ -57,9 +57,9 @@ def login():
         </form>
     '''
 
-# @server.route("/dash")
-# def MyDashApp():
-#     return app.index()
+@server.route("/dash")
+def MyDashApp():
+    return app.index()
 
 if __name__ == '__main__':
     app.run_server(debug=True)
