@@ -17,19 +17,14 @@
                   <a class="nav-link" href="{{ url_for('home') }}">Home</a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="{{ url_for('procedure') }}">Procedure</a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="{{ url_for('suburb_forecast') }}">Forecasting</a>
+                  <a class="nav-link" href="{{ url_for('procedure') }}">Rental Procedure</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Historical Data
+                    Historical Rental Data
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{{ url_for('suburb_forecast') }}">Forecasting</a>
                     <a class="dropdown-item" href="{{ url_for('suburb_historicaldata',Number=1) }}">All Properties</a>
                     <a class="dropdown-item" href="{{ url_for('suburb_historicaldata',Number=2) }}">1 Bedroom Flats</a>
                     <a class="dropdown-item" href="{{ url_for('suburb_historicaldata',Number=3) }}">2 Bedroom Flats</a>
@@ -40,7 +35,7 @@
                   </div>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="https://map-vis-rentwithheart-iteration2.onrender.com/">Suburb Recommender</a>
+                  <a class="nav-link" href="https://map-vis-rentwithheart-iteration2.onrender.com/">Rental Recommendation</a>
                 </li>
                 <li class="nav-item active">
                   <a class="nav-link" href="https://dash-charity-app.onrender.com">Charity</a>
