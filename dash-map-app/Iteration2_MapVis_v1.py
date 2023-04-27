@@ -4,8 +4,8 @@ import geopandas as gpd
 import plotly.express as px
 import dash_bootstrap_components as dbc
 
-forecast_path = 'https://raw.githubusercontent.com/sbun0004/FIT5120-RentWithHeart/main/dash-app/df_forecast_cleaned.csv'
-localities_path= 'https://github.com/sbun0004/FIT5120-RentWithHeart/blob/main/dash-app/vic_localities_cleaned/vic_localities_cleaned.shp?raw=true'
+forecast_path = 'https://raw.githubusercontent.com/sbun0004/FIT5120-RentWithHeart/main/dash-map-app/df_forecast_cleaned.csv'
+localities_path= 'https://raw.githubusercontent.com/sbun0004/FIT5120-RentWithHeart/main/dash-map-app/vic_localities_cleaned.geojson'
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
 server = app.server
@@ -63,7 +63,7 @@ app.layout = html.Div([
 
 def update_choropleth(housing_type):
     df_forecast = pd.read_csv(forecast_path, index_col=0)
-    localities_df = gpd.read_file(localities_path)
+    localities_df = gpd.read_file(localities_path, encoding='utf-8')
     
     geo_df = localities_df.merge(df_forecast[df_forecast['Housing_Type'] == housing_type], on='Suburb').set_index('Suburb')
     
