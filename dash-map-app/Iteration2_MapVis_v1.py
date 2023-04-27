@@ -63,7 +63,7 @@ app.layout = html.Div([
 
 def update_choropleth(housing_type):
     df_forecast = pd.read_csv(forecast_path, index_col=0)
-    localities_df = gpd.read_file(localities_path)
+    localities_df = gpd.read_file(localities_path, encoding='utf-8')
     
     geo_df = localities_df.merge(df_forecast[df_forecast['Housing_Type'] == housing_type], on='Suburb').set_index('Suburb')
     
