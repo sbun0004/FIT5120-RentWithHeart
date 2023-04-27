@@ -10,11 +10,11 @@ import dash_bootstrap_components as dbc
 
 
 #Reading Data File
-data = pd.read_csv("https://raw.githubusercontent.com/sbun0004/FIT5120-RentWithHeart/main/charity/data_charity.csv")
+data = pd.read_csv("/Users/aparnasuresh/Desktop/try/data_charity.csv")
 data["inside_vic"] = data["State"].apply(lambda x: "Only Victorian Charities" if x in ['Victoria', 'VIC','Vic', 'victoria', 'St Helena Victoria', 'VICTORIA', 'Benalla Victoria', 'vic' 'Victoria,', 'VIC ', 'Victora'] else "Charities that operate across Australia including Victoria")
 
 #Header Image path
-# image_path = '/Users/aparnasuresh/Desktop/try/image.png'
+image_path = '/Users/aparnasuresh/Desktop/try/image.png'
 
 
 # Using base64 encoding and decoding
@@ -30,7 +30,7 @@ server = app.server
 
 
 app.layout = html.Div([
-    # html.Img(src=b64_image(image_path), style={'height': '450px','width':'100%'}),
+    html.Img(src=b64_image(image_path), style={'height': '450px','width':'100%'}),
     html.Br(),
     
     html.Br(),
