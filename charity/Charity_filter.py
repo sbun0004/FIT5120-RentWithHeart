@@ -96,5 +96,4 @@ def update_table(value):
     return table_data
 
 
-if __name__ == '__main__':
-    app.run_server(debug=True)
+app.run_server(debug=True,use_reloader=False)
