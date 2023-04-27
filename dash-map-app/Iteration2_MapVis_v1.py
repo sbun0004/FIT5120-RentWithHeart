@@ -7,14 +7,14 @@ import dash_bootstrap_components as dbc
 forecast_path = 'https://raw.githubusercontent.com/sbun0004/FIT5120-RentWithHeart/main/dash-map-app/df_forecast_cleaned.csv'
 localities_path= 'https://raw.githubusercontent.com/sbun0004/FIT5120-RentWithHeart/main/dash-map-app/vic_localities_cleaned.geojson'
 
-app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
+app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
 
 app.layout = html.Div([
 
     html.Div([
         dcc.Markdown(
-            '# Forecasted Change in Median Rental Prices (%)'
+            '# Forecasted Change in Median Rental Prices (%)',
             )
         ]),
     
