@@ -1,10 +1,9 @@
 from flask import Flask, render_template, session, redirect, url_for, request
-from dash import Dash, html
 import mysql.connector
 
 server = Flask(__name__, template_folder='templates', static_folder='static')
-app = Dash(__name__, server=server, url_base_pathname='/test/')
-app.layout = html.Div([html.H1('This Is head',style={'textAlign':'center'})])
+# app = Dash(__name__, server=server, url_base_pathname='/test/')
+# app.layout = html.Div([html.H1('This Is head',style={'textAlign':'center'})])
 
 server.secret_key = 'mysecret'
 
@@ -57,9 +56,9 @@ def login():
         </form>
     '''
 
-@server.route("/dash")
-def MyDashApp():
-    return app.index()
+# @server.route("/dash")
+# def MyDashApp():
+#     return app.index()
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    server.run_server(debug=True)
