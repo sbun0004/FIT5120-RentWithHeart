@@ -56,6 +56,19 @@ def login():
         </form>
     '''
 
+@app.route('/about')
+def about():
+    if 'logged_in' not in session:
+        return redirect(url_for('login'))
+    return render_template('about.html')
+
+@app.route('/procedure')
+def procedure():
+    if 'logged_in' not in session:
+        return redirect(url_for('login'))
+    return render_template('procedure.html')
+
+
 # @server.route("/dash")
 # def MyDashApp():
 #     return app.index()
