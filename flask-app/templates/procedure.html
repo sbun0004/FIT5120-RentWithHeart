@@ -1,71 +1,109 @@
 {% extends "index.html" %}
 
 {% block content %}
-<div class="container-fluid" style="background-color: #023047;padding-top: 150px;padding-bottom: 150px">
-    <div class="row justify-content-center" style="margin-bottom: 100px;">
-        <h1 style="color: #8ecae6;">Here below is the Rental Procedure</h1>
+<div class="container-fluid c-bg-prim" style="height: 150px;">
+    <div class="row">
+        <div class="col-1">
+            <h1> </h1>
+        </div>
+        <div class="col-11">
+            <h1 class="font-weight-bold"> Rental Guide </h1>
+        </div>
     </div>
-    <div class="container">
-        <div class="row" style="margin-bottom: 20px;">
-            <div class="col-sm-12 align-items-stretch">
-                <div class="card" style="background-color: #8ecae6;">
-                <div class="card-body">
-                    <h5 class="card-title">1. Have your identification ready. This can be your license, passport, birth certificate, Medicare card, or your Visa letter if you are from any other country</h5>
-                </div>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-1">
+            <h1> </h1>
         </div>
-        <div class="row" style="margin-bottom: 20px;">
-            <div class="col-sm-12 align-items-stretch">
-                <div class="card" style="background-color: #8ecae6;">
-                <div class="card-body">
-                    <h5 class="card-title">2. Have your references ready. This could be from your employer. Your previous house owner or someone whom you trust and who can refer you</h5>
-                </div>
-                </div>
-            </div>
+        <div class="col-11">
+            <h5 class="font-weight-bold"> Guidance on how to do Rental in Victoria </h5>
         </div>
-        <div class="row" style="margin-bottom: 20px;">
-            <div class="col-sm-12 align-items-stretch">
-                <div class="card" style="background-color: #8ecae6;">
-                <div class="card-body">
-                    <h5 class="card-title">3. Have your rental history of two years and give the contact of your previous house owners or landlords</h5>
+    </div>
+  </div>
+<div class="container-fluid bg-img-3" style="height: 400px;box-shadow: 0px 0px 20px 12px #EAE8DC inset;">
+    
+</div>
+<div class="container-fluid c-bg-prim" style="padding-top: 100px;padding-bottom: 100px">
+    <div class="row">
+        <div class="col-12">
+            <div class="container-fluid mt-5 mb-5">    
+                <div class="row">
+                    <div class="col-sm-2 d-flex align-items-stretch">
+                        
+                    </div>
+                    <div class="col-sm-2 d-flex align-items-stretch">
+                        <div class="card">
+                        <img class="card-img-top" src="{{ url_for('static', filename='images/g1.jpg') }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">1</h5>
+                            <p class="card-text">Have your identification ready. This can be your license, passport, birth certificate, Medicare card, or your Visa letter if you are from any other country</p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 d-flex align-items-stretch">
+                        <div class="card">
+                        <img class="card-img-top" src="{{ url_for('static', filename='images/g2.jpg') }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">2</h5>
+                            <p class="card-text">Have your references ready. This could be from your employer. Your previous house owner or someone whom you trust and who can refer you</p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 d-flex align-items-stretch">
+                        <div class="card">
+                        <img class="card-img-top" src="{{ url_for('static', filename='images/g3.jpg') }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">3</h5>
+                            <p class="card-text">Have your rental history of two years and give the contact of your previous house owners or landlords</p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 d-flex align-items-stretch">
+                        <div class="card">
+                        <img class="card-img-top" src="{{ url_for('static', filename='images/g4.jpg') }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">4</h5>
+                            <p class="card-text">Proud of income, your employment letter or your payslips of the past six months</p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 d-flex align-items-stretch">
+                        
+                    </div>
                 </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin-bottom: 20px;">
-            <div class="col-sm-12 align-items-stretch">
-                <div class="card" style="background-color: #8ecae6;">
-                <div class="card-body">
-                    <h5 class="card-title">4. Proud of income, your employment letter or your payslips of the past six months</h5>
-                </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin-bottom: 20px;">
-            <div class="col-sm-12 align-items-stretch">
-                <div class="card" style="background-color: #8ecae6;">
-                <div class="card-body">
-                    <h5 class="card-title">5. Employment details and history</h5>
-                </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin-bottom: 20px;">
-            <div class="col-sm-12 align-items-stretch">
-                <div class="card" style="background-color: #8ecae6;">
-                <div class="card-body">
-                    <h5 class="card-title">6. Copy of your bank statements</h5>
-                </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin-bottom: 20px;">
-            <div class="col-sm-12 align-items-stretch">
-                <div class="card" style="background-color: #8ecae6;">
-                <div class="card-body">
-                    <h5 class="card-title">7. Recommendation letter from charities</h5>
-                </div>
+                <div class="row" style="padding-top:100px;">
+                    <div class="col-sm-3 d-flex align-items-stretch">
+                        
+                    </div>
+                    <div class="col-sm-2 d-flex align-items-stretch">
+                        <div class="card">
+                        <img class="card-img-top" src="{{ url_for('static', filename='images/g5.jpg') }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">5</h5>
+                            <p class="card-text">Employment details and history</p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 d-flex align-items-stretch">
+                        <div class="card">
+                        <img class="card-img-top" src="{{ url_for('static', filename='images/g6.jpg') }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">6</h5>
+                            <p class="card-text">Copy of your bank statements</p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 d-flex align-items-stretch">
+                        <div class="card">
+                        <img class="card-img-top" src="{{ url_for('static', filename='images/g7.jpg') }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">7</h5>
+                            <p class="card-text">Recommendation letter from charities</p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 d-flex align-items-stretch">
+                        
+                    </div>
                 </div>
             </div>
         </div>

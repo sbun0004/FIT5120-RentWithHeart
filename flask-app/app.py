@@ -23,20 +23,16 @@ def home():
         return redirect(url_for('login'))
     return render_template('home.html')
 
-@app.route('/suburb/forecast')
-def suburb_forecast():
-    if 'logged_in' not in session:
-        return redirect(url_for('login'))
-    return render_template('suburb_forecast.html')
-
 @app.route('/suburb/<int:Number>')
 def suburb_historicaldata(Number):
     if 'logged_in' not in session:
         return redirect(url_for('login'))
 
-    if Number < 1 or Number > 7:
+    if Number < 0 or Number > 7:
         return redirect(url_for('home'))
     else:
+        if Number == 0:
+            return render_template('suburb_forecast.html')
         return render_template('historical_trends/subdat'+str(Number)+'.html')
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -68,10 +64,17 @@ def procedure():
         return redirect(url_for('login'))
     return render_template('procedure.html')
 
+@app.route('/recommender')
+def recommender():
+    if 'logged_in' not in session:
+        return redirect(url_for('login'))
+    return render_template('recommender.html')
 
-# @server.route("/dash")
-# def MyDashApp():
-#     return app.index()
+@app.route('/support')
+def support():
+    if 'logged_in' not in session:
+        return redirect(url_for('login'))
+    return render_template('support.html')
 
 if __name__ == '__main__':
     app.run_server(debug=True)
