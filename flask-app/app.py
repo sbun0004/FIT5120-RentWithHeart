@@ -68,6 +68,17 @@ def procedure():
         return redirect(url_for('login'))
     return render_template('procedure.html')
 
+@app.route('/recommender')
+def recommender():
+    if 'logged_in' not in session:
+        return redirect(url_for('login'))
+    return render_template('recommender.html')
+
+@app.route('/support')
+def support():
+    if 'logged_in' not in session:
+        return redirect(url_for('login'))
+    return render_template('support.html')
 
 # @server.route("/dash")
 # def MyDashApp():
