@@ -17,7 +17,7 @@ a {
   font-weight: 800;
   color: royalblue;
   overflow: hidden;
-  background: linear-gradient(to right, #023047, #023047 50%, rgb(0, 0, 0) 50%);
+  background: linear-gradient(to right, #646561, #646561 50%, #92938d 50%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -45,3 +45,48 @@ a:hover{
     max-height: 250px;
     margin-bottom: 1rem;
   }
+
+.test-img {
+    background-image: url("/static/images/page1.jpg");
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.bg-img {
+    /* The image used */
+    background-image: url("/static/images/pic1.jpg");
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+    /* Needed to position the navbar */
+    position: relative;
+  }
+
+.c-text-orange {
+    color: #EE6C4D;
+}
+
+.c-text-prim {
+    color: #646561;
+}
+
+.c-background-orange {
+    background-color: #EE6C4D;
+}
+
+.c-bg-prim {
+    background-color: #EAE8DC;
+}
+
+.img-crop {
+    width: 150px; 
+    height: 150px; 
+    object-fit: cover;
+    object-position: 25% 25%; 
+}
