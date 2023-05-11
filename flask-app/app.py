@@ -80,9 +80,5 @@ def support():
         return redirect(url_for('login'))
     return render_template('support.html')
 
-# @server.route("/dash")
-# def MyDashApp():
-#     return app.index()
-
 if __name__ == '__main__':
     app.run_server(debug=True)
