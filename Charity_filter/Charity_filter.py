@@ -3,25 +3,18 @@ from dash import Dash, dcc, html, Input, Output
 from plotly.express import data
 import pandas as pd
 import re
-import base64
 from PIL import Image
 import dash_bootstrap_components as dbc
 
 
 
 #Reading Data File
-data = pd.read_csv("/Users/aparnasuresh/Desktop/try/data_charity.csv")
-data["inside_vic"] = data["State"].apply(lambda x: "Only Victorian Charities" if x in ['Victoria', 'VIC','Vic', 'victoria', 'St Helena Victoria', 'VICTORIA', 'Benalla Victoria', 'vic' 'Victoria,', 'VIC ', 'Victora'] else "Charities that operate across Australia including Victoria")
+data = pd.read_csv(r"data_charity.csv")
+data["inside_vic"] = data["State"].apply(lambda x: "Only Victorian support organisations" if x in ['Victoria', 'VIC','Vic', 'victoria', 'St Helena Victoria', 'VICTORIA', 'Benalla Victoria', 'vic' 'Victoria,', 'VIC ', 'Victora'] else "Support organisations that operate across Australia including Victoria")
 
 #Header Image path
-image_path = '/Users/aparnasuresh/Desktop/try/image.png'
+image_path = 'https://charity-project.s3.ap-southeast-2.amazonaws.com/html_head.jpeg'
 
-
-# Using base64 encoding and decoding
-def b64_image(image_filename):
-    with open(image_filename, 'rb') as f:
-        image = f.read()
-    return 'data:image/png;base64,' + base64.b64encode(image).decode('utf-8')
 
 #Webpage HTML
 app = Dash(__name__ , external_stylesheets=[dbc.themes.FLATLY])
@@ -29,33 +22,45 @@ server = app.server
 
 
 
-app.layout = html.Div([
-    html.Img(src=b64_image(image_path), style={'height': '450px','width':'100%'}),
+app.layout = html.Div(style={'backgroundColor': '#EAE8DC'}, children= [
+
+
+    html.Img(src=image_path, style={'height': '450px','width':'100%'}),
     html.Br(),
     
     html.Br(),
-    html.H3('Select a Charity location Preference:'),
-    html.H5('Please note that all the charities given below operate in Victoria.'),
-    html.H5('There are some charities that are based on the other states of Australia, but all of them operate in Victoria remotely. All the charity details that you see operate in Victoria, Australia. So, please enter your preferred charity.'),
+    html.H3('Select your location preference for the Support organisation', style = {'textAlign':'center'}),
+    html.P('''Please note that all the organisations given below operate in Victoria. 
+           There are some support service organisations that are based on the other states of Australia, 
+           but all of them operate in Victoria remotely. All the organisation details that you see, operate in 
+           Victoria, Australia.''', style = {'margin-left': '10%', 'width': '80%', 'textAlign':'center'}),
+    
     html.Br(),
+    html.H4('Please enter your preferred support organisation:', style = {'textAlign':'center'}),
+    
     dcc.RadioItems(
         id='radio-filter',
         options=[{'label': i, 'value': i} for i in data['inside_vic'].unique()],
         value = data['inside_vic'].unique()[0],
-        labelStyle={'display': 'inline-block'}
+        labelStyle={'display': 'inline-block', 'margin-right': '20px'},
+        inputStyle={'margin-right': '10px'},
+        style = {'textAlign':'center'}
     ),
     
-    
-    html.H4('Select from the given Suburbs:'),
+    html.Br(),
+    html.H4('Select from the given Suburbs:', style = {'textAlign':'center'}),
     dcc.Dropdown(
         id='dropdown-filtered',
         options=[],
         value=None,
-        multi = True
+        multi = True,
+        style={'margin-left': '15%', 'width': '70%'}
     ),
     
     html.Br(),
-    html.Div(id='output', style={'border': 'solid', 'border-width': '2px', 'border-collapse': 'separate'})
+    html.Div(id='output', style={'width': '81%', 'border': 'solid', 'border-width': '2px', 'border-collapse': 'separate', 'margin-left':'10%'}),
+    html.Br(),
+    html.Br()
 ])
 
 @app.callback(
@@ -64,7 +69,7 @@ app.layout = html.Div([
 )
 
 def update_dropdown(value):
-    if(value == "Only Victorian Charities"):
+    if(value == "Only Victorian organisations"):
         filtered_data = data[data['inside_vic'] == value]
     else:
         filtered_data = data
@@ -90,8 +95,8 @@ def update_table(value):
         charity_type = [col for col, value in row.items() if str(value).strip() == "Y"]
         final_df = final_df.append({"Name": row['Charity_Legal_Name'], "Website": row['Charity_Website'], "Type": str(charity_type).replace("[", "").replace("]", "")}, ignore_index = True)
 
-    table_data = [html.Tr([html.Th(col) for col in final_df.columns])] + \
-                 [html.Tr([html.Td(final_df.iloc[i][col])  if col != "Website" else html.Td(html.A(final_df.iloc[i][col], href = final_df.iloc[i][col])) for col in final_df.columns])
+    table_data = [html.Tr([html.Th(col, style={'width':'27%', 'padding': '10px', 'border-bottom': '2px solid black'}) for col in final_df.columns])] + \
+                 [html.Tr([html.Td(final_df.iloc[i][col], style={'padding': '10px'})  if col != "Website" else html.Td(html.A(final_df.iloc[i][col], href = final_df.iloc[i][col])) for col in final_df.columns])
                   for i in range(len(final_df))]
     return table_data
 
