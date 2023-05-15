@@ -12,8 +12,6 @@ import dash_bootstrap_components as dbc
 data = pd.read_csv(r"data_charity.csv")
 data["inside_vic"] = data["State"].apply(lambda x: "Only Victorian support organisations" if x in ['Victoria', 'VIC','Vic', 'victoria', 'St Helena Victoria', 'VICTORIA', 'Benalla Victoria', 'vic' 'Victoria,', 'VIC ', 'Victora'] else "Support organisations that operate across Australia including Victoria")
 
-#Header Image path
-image_path = 'https://charity-project.s3.ap-southeast-2.amazonaws.com/html_head.jpeg'
 
 
 #Webpage HTML
@@ -24,10 +22,6 @@ server = app.server
 
 app.layout = html.Div(style={'backgroundColor': '#EAE8DC'}, children= [
 
-
-    html.Img(src=image_path, style={'height': '450px','width':'100%'}),
-    html.Br(),
-    
     html.Br(),
     html.H3('Select your location preference for the Support organisation', style = {'textAlign':'center'}),
     html.P('''Please note that all the organisations given below operate in Victoria. 
@@ -58,7 +52,7 @@ app.layout = html.Div(style={'backgroundColor': '#EAE8DC'}, children= [
     ),
     
     html.Br(),
-    html.Div(id='output', style={'width': '81%', 'border': 'solid', 'border-width': '2px', 'border-collapse': 'separate', 'margin-left':'10%'}),
+    html.Div(id='output', style={'width': '90%', 'border': 'solid', 'border-width': '2px', 'border-collapse': 'separate', 'margin-left':'5%'}),
     html.Br(),
     html.Br()
 ])
@@ -88,12 +82,12 @@ def update_table(value):
     else:
         filtered_df = data
     
-    filtered_df = filtered_df[['Charity_Legal_Name','Charity_Website', 'Advancing_Education', 'Promoting_or_protecting_human_rights', 'Advancing_social_or_public_welfare', 'Children', 'Families', 'Females', 'Financially_Disadvantaged', 'Males', 'People_at_risk_of_homelessness']]
+    filtered_df = filtered_df[['Charity_Legal_Name','Charity_Website', 'Advancing_Education', 'Promoting_or_protecting_human_rights', 'Advancing_social_or_public_welfare', 'Children', 'Families', 'Females', 'Financially_Disadvantaged', 'Males', 'People_at_risk_of_homelessness','email', 'contact']]
     final_df = pd.DataFrame(columns=["Name", "Website", "Type"])
     
     for index, row in filtered_df.iterrows():
         charity_type = [col for col, value in row.items() if str(value).strip() == "Y"]
-        final_df = final_df.append({"Name": row['Charity_Legal_Name'], "Website": row['Charity_Website'], "Type": str(charity_type).replace("[", "").replace("]", "")}, ignore_index = True)
+        final_df = final_df.append({"Name": row['Charity_Legal_Name'], "Website": row['Charity_Website'], "Type": str(charity_type).replace("[", "").replace("]", ""), "E-mail": row['email'],"Phone number": row['contact']}, ignore_index = True)
 
     table_data = [html.Tr([html.Th(col, style={'width':'27%', 'padding': '10px', 'border-bottom': '2px solid black'}) for col in final_df.columns])] + \
                  [html.Tr([html.Td(final_df.iloc[i][col], style={'padding': '10px'})  if col != "Website" else html.Td(html.A(final_df.iloc[i][col], href = final_df.iloc[i][col])) for col in final_df.columns])
